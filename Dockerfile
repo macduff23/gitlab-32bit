@@ -1,5 +1,5 @@
-FROM sameersbn/ubuntu:14.04.20150712
-MAINTAINER sameer@damagehead.com
+FROM pyro225/ubuntu-32bit:latest
+MAINTAINER pyro225@gmail.com
 
 ENV GITLAB_VERSION=7.12.2 \
     GITLAB_SHELL_VERSION=2.6.3 \
