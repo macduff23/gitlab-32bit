@@ -1,4 +1,3 @@
-[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
 # Table of Contents
 - [Introduction](#introduction)
     - [Version](#version)
@@ -57,6 +56,10 @@
 
 # Introduction
 
+Thank for sameersbn
+
+Gitlab-32bit
+
 Dockerfile to build a [GitLab](https://about.gitlab.com/) container image.
 
 ## Version
@@ -110,19 +113,13 @@ Your docker host needs to have 1GB or more of available RAM to run GitLab. Pleas
 Pull the image from the docker index. This is the recommended method of installation as it is easier to update image. These builds are performed by the **Docker Trusted Build** service.
 
 ```bash
-docker pull sameersbn/gitlab:7.12.2-2
-```
-
-You can also pull the `latest` tag which is built from the repository *HEAD*
-
-```bash
-docker pull sameersbn/gitlab:latest
+docker pull pyro225/gitlab-32bit:latest
 ```
 
 Alternately you can build the image locally.
 
 ```bash
-git clone https://github.com/sameersbn/docker-gitlab.git
+git clone https://github.com/pyro225/docker-gitlab.git
 cd docker-gitlab
 docker build --tag=$USER/gitlab .
 ```
@@ -132,7 +129,7 @@ docker build --tag=$USER/gitlab .
 The quickest way to get started is using [docker-compose](https://docs.docker.com/compose/).
 
 ```bash
-wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
+wget https://raw.githubusercontent.com/pyro225/docker-gitlab/master/docker-compose.yml
 docker-compose up
 ```
 
@@ -145,7 +142,7 @@ docker run --name gitlab-postgresql -d \
     --env 'DB_NAME=gitlabhq_production' \
     --env 'DB_USER=gitlab' --env 'DB_PASS=password' \
     --volume /srv/docker/gitlab/postgresql:/var/lib/postgresql \
-    sameersbn/postgresql:9.4-2
+    pyro225/postgresql-32bit:latest
 ```
 
 Step 2. Launch a redis container
@@ -153,7 +150,7 @@ Step 2. Launch a redis container
 ```bash
 docker run --name gitlab-redis -d \
     --volume /srv/docker/gitlab/redis:/var/lib/redis \
-    sameersbn/redis:latest
+    pyro225/redis-32bit:latest
 ```
 
 Step 3. Launch the gitlab container
@@ -164,7 +161,7 @@ docker run --name gitlab -d \
     --publish 10022:22 --publish 10080:80 \
     --env 'GITLAB_PORT=10080' --env 'GITLAB_SSH_PORT=10022' \
     --volume /srv/docker/gitlab/gitlab:/home/git/data \
-sameersbn/gitlab:7.12.2-2
+pyro225/gitlab-32bit:latest
 ```
 
 *Please refer to [Available Configuration Parameters](#available-configuration-parameters) to understand `GITLAB_PORT` and other configuration options*
